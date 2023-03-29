@@ -11,7 +11,7 @@ def files_path(instance, filename):
     return '/'.join(['system', timezone.now().strftime("%Y-%m-%d"), str(uuid.uuid4()) + os.path.splitext(filename)[-1]])
 
 
-class MediaFile(CoreModel):
+class SaveFile(CoreModel):
     name = CharField(max_length=128, verbose_name="文件名称", null=True, blank=True)
     type = CharField(max_length=200, verbose_name="文件类型", null=True, blank=True)
     size = CharField(max_length=64, verbose_name="文件大小", null=True, blank=True)

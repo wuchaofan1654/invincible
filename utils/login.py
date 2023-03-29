@@ -10,11 +10,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework_jwt.views import ObtainJSONWebToken, jwt_response_payload_handler
 
-from apps.system.models.login_info import LoginInfo
-from frames.utils.exceptions import GenException
-from frames.utils.jwt_util import jwt_get_session_id
-from frames.utils.request_util import get_request_ip, get_os, get_browser, get_login_location
-from frames.response import SuccessResponse, ErrorResponse
+from system.models.login_info import LoginInfo
+from utils.exceptions import GenException
+from utils.jwt_util import jwt_get_session_id
+from utils.request_util import get_request_ip, get_os, get_browser, get_login_location
+from framework.response import SuccessResponse, ErrorResponse
 
 logger = logging.getLogger(__name__)
 

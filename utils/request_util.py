@@ -11,7 +11,7 @@ from django.urls.resolvers import ResolverMatch
 from user_agents import parse
 
 from application import settings
-from frames.utils.authentication import OpAuthJwtAuthentication
+from utils.authentication import OpAuthJwtAuthentication
 
 logger = logging.getLogger(__name__)
 

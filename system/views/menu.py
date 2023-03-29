@@ -1,19 +1,12 @@
-from django.contrib.auth import authenticate, get_user_model
 from rest_framework.request import Request
-from rest_framework.views import APIView
 
-from framework.response import SuccessResponse, ErrorResponse
-from apps.permission.permissions import CommonPermission, DeptDestroyPermission
-from frames.filters import DataLevelPermissionsFilter
-from frames.viewsets import CustomModelViewSet
-from apps.permission.filters import MenuFilter, DeptFilter, PostFilter, RoleFilter, UserProfileFilter, ModuleFilter
-from apps.permission.models import Role, Menu, Dept, Post, Module
-from apps.permission.serializers import UserProfileSerializer, MenuSerializer, RoleSerializer, \
-    MenuCreateUpdateSerializer, DeptSerializer, DeptCreateUpdateSerializer, PostSerializer, PostCreateUpdateSerializer, \
-    RoleCreateUpdateSerializer, DeptTreeSerializer, MenuTreeSerializer, UserProfileCreateUpdateSerializer, \
-    PostSimpleSerializer, RoleSimpleSerializer, ExportUserProfileSerializer, ExportRoleSerializer, ExportPostSerializer, \
-    UserProfileImportSerializer, ModuleSerializer, ModuleTreeSerializer, ModuleCreateUpdateSerializer
-from apps.system.models import DictDetails
+from framework.response import SuccessResponse
+from system.permissions import CommonPermission
+from framework.filters import DataLevelPermissionsFilter
+from framework.viewsets import CustomModelViewSet
+from system.filters import MenuFilter
+from system.models import Menu
+from system.serializers import MenuSerializer, MenuCreateUpdateSerializer, MenuTreeSerializer
 
 
 class MenuModelViewSet(CustomModelViewSet):

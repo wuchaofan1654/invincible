@@ -7,8 +7,8 @@ import xlrd
 import xlwt
 from django.conf import settings
 
-from apps.system.models import SaveFile
-from apps.system.serializers import SaveFileSerializer
+from system.models import SaveFile
+from system.serializers import SaveFileSerializer
 
 
 def len_byte(value):

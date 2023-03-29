@@ -1,3 +1,4 @@
+
 # 加密
 def encrypt(src_str, password='1938762450'):
     # 将字符串转换成字节数组

@@ -1,3 +1,4 @@
+
 # 导出excel数据
 import hashlib
 import os
@@ -19,13 +20,13 @@ def len_byte(value):
     return int(length)
 
 
-def export_excel(field_data: list, data: list, FileName: str, file_path: str = settings.MEDIA_ROOT):
+def export_excel(field_data: list, data: list, filename: str, file_path: str = settings.MEDIA_ROOT):
     """
     Excel导出
     :param data: 数据源
     :param field_data: 首行数据源
     :param file_path: 文件保存路径
-    :param FileName: 文件保存名字
+    :param filename: 文件保存名字
     :return:
     """
     wbk = xlwt.Workbook(encoding='utf-8')
@@ -105,32 +106,32 @@ def export_excel(field_data: list, data: list, FileName: str, file_path: str = s
             sheet.write(row, index, label=values, style=left_style)
         row += 1
 
-    monthTime = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-    pathRoot = os.path.join(file_path, 'system', monthTime)
-    if not os.path.exists(pathRoot):
-        os.makedirs(pathRoot)
-    path_name = os.path.join(pathRoot, FileName)
+    month_time = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+    path_root = os.path.join(file_path, 'system', month_time)
+    if not os.path.exists(path_root):
+        os.makedirs(path_root)
+    path_name = os.path.join(path_root, filename)
     wbk.save(path_name)
-    return os.path.join('system', monthTime, FileName)
+    return os.path.join('system', month_time, filename)
 
 
-def export_excel_save_model(request, field_data, data, FilName):
+def export_excel_save_model(request, field_data, data, filename):
     """
     导出Excel并保存到 SaveFile 文件管理中
     :param request:
     :param field_data: 首行数据源
     :param data: 数据源
-    :param FilName: 文件名
+    :param filename: 文件名
     :return:
     """
     # 根据生成的字典MD5
     time_stamp = hashlib.md5(str(field_data).encode('utf8')).hexdigest()
     # 存入文件数据库中
-    FilName = '.'.join(FilName.split('.')[:-1]) + str(time_stamp) + '.' + FilName.split('.')[-1]
-    file_rul = export_excel(field_data=field_data, data=data, FileName=FilName)
+    filename = '.'.join(filename.split('.')[:-1]) + str(time_stamp) + '.' + filename.split('.')[-1]
+    file_rul = export_excel(field_data=field_data, data=data, filename=filename)
     save_file, _ = SaveFile.objects.get_or_create(file=file_rul)
     if _:
-        save_file.name = FilName
+        save_file.name = filename
         save_file.type = 'application/vnd.ms-excel'
         save_file.size = os.path.getsize(os.path.join(settings.MEDIA_ROOT, file_rul))
         save_file.address = '本地存储'
@@ -154,11 +155,13 @@ def excel_to_data(file_url, field_data):
     table = data.sheets()[0]
     # 创建一个空列表，存储Excel的数据
     tables = []
-    for i, rown in enumerate(range(table.nrows)):
-        if i == 0: continue
+    for i, row_n in enumerate(range(table.nrows)):
+        if i == 0:
+            continue
+
         array = {}
         for index, ele in enumerate(field_data.keys()):
-            cell_value = table.cell_value(rown, index)
+            cell_value = table.cell_value(row_n, index)
             # 由于excel导入数字类型后，会出现数字加 .0 的，进行处理
             if type(cell_value) is float and str(cell_value).split('.')[1] == '0':
                 cell_value = int(str(cell_value).split('.')[0])

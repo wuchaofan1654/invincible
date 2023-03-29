@@ -11,7 +11,9 @@ from django.urls.resolvers import ResolverMatch
 from user_agents import parse
 
 from application import settings
-# from utils.authentication import OpAuthJwtAuthentication
+from utils.authentication import OpAuthJwtAuthentication
+import requests
+import eventlet  # 导入eventlet这个模块
 
 logger = logging.getLogger(__name__)
 
@@ -165,38 +167,39 @@ def get_login_location(request, *args, **kwargs):
     :return:
     """
     # todo //临时解决AttributeError: module 'select' has no attribute 'kevent'
-    return ''
-    # if not getattr(settings, "ENABLE_LOGIN_LOCATION", False): return ""
-    # import requests
-    # import eventlet  # 导入eventlet这个模块
-    # request_ip = get_request_ip(request)
-    # # 从缓存中获取
-    # location = cache.get(request_ip) if getattr(settings, "REDIS_ENABLE", False) else ""
-    # if location:
-    #     return location
-    # # 通过api 获取，再缓存redis
-    # try:
-    #     eventlet.monkey_patch(thread=False)  # 必须加这条代码
-    #     with eventlet.Timeout(2, False):  # 设置超时时间为2秒
-    #         apiurl = "http://whois.pconline.com.cn/ip.jsp?ip=%s" % request_ip
-    #         r = requests.get(apiurl)
-    #         content = r.content.decode('GBK')
-    #         location = str(content).replace('\r', '').replace('\n', '')[:64]
-    #         if getattr(settings, "REDIS_ENABLE", False):
-    #             cache.set(request_ip, location, 86400)
-    #         return location
-    # except Exception as e:
-    #     pass
-    # return ""
+    if not getattr(settings, "ENABLE_LOGIN_LOCATION", False):
+        return ""
+
+    request_ip = get_request_ip(request)
+    # 从缓存中获取
+    location = cache.get(request_ip) if getattr(settings, "REDIS_ENABLE", False) else ""
+    if location:
+        return location
+    # 通过api 获取，再缓存redis
+    try:
+        eventlet.monkey_patch(thread=False)  # 必须加这条代码
+        with eventlet.Timeout(2, False):  # 设置超时时间为2秒
+            api_url = "http://whois.pconline.com.cn/ip.jsp?ip=%s" % request_ip
+            r = requests.get(api_url)
+            content = r.content.decode('GBK')
+            location = str(content).replace('\r', '').replace('\n', '')[:64]
+            if getattr(settings, "REDIS_ENABLE", False):
+                cache.set(request_ip, location, 86400)
+            return location
+    except Exception as e:
+        logger.error(e)
+        pass
+    return ""
 
 
 def get_verbose_name(queryset=None, view=None, model=None):
-    """
+    '''
     获取 verbose_name
-    :param request:
+    :param queryset:
     :param view:
+    :param model:
     :return:
-    """
+    '''
     try:
         if queryset and hasattr(queryset, 'model'):
             model = queryset.model
@@ -207,5 +210,6 @@ def get_verbose_name(queryset=None, view=None, model=None):
         if model:
             return getattr(model, '_meta').verbose_name
     except Exception as e:
+        logger.error(e)
         pass
     return ""
