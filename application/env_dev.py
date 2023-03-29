@@ -16,7 +16,7 @@ DATABASE_USER = "wcf"
 
 DATABASE_PASSWORD = "123456"
 # 数据库名
-DATABASE_NAME = "automatic"
+DATABASE_NAME = "invincible"
 
 
 # ================================================= #
@@ -42,7 +42,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # 允许ajax请求携带cookie
 CORS_ALLOW_CREDENTIALS = False
 # 验证码状态
-CAPTCHA_STATE = False
+CAPTCHA_STATE = True
 # 操作日志配置
 API_LOG_ENABLE = True
 API_LOG_METHODS = ['POST', 'DELETE', 'PUT']  # 'ALL' or ['POST', 'DELETE']
@@ -51,4 +51,4 @@ INTERFACE_PERMISSION = True
 # 是否开启登录ip转换成城市位置
 ENABLE_LOGIN_LOCATION = True
 # 比较报告图标存储地根目录
-COMPARE_REPORT_ADDRES = 'http://127.0.0.1:8000'
+COMPARE_REPORT_ADDRESS = 'http://127.0.0.1:8000'

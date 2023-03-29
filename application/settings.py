@@ -153,8 +153,8 @@ STATIC_URL = '/static/'
 静态目录、多媒体配置
 """
 # 收集静态文件，必须将 MEDIA_ROOT,STATICFILES_DIRS先注释
-# python manage.py collectstatic
-# STATIC_ROOT = os.path.join(BASE_DIR,'static')
+# python3 manage.py collectstatic
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # 设置django的静态文件目录
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),

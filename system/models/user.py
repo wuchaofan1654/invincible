@@ -18,7 +18,6 @@ def avatar_path(instance, filename):
 
 
 class UserProfile(AbstractUser, CoreModel):
-
     USER_TYPE_CHOICES = (
         (0, "后台用户"),
         (1, "前台用户"),
@@ -69,7 +68,7 @@ class UserProfile(AbstractUser, CoreModel):
         return cache.delete(f'permission_interface_dict_{self.username}')
 
     class Meta:
-        abstract = settings.AUTH_USER_MODEL != 'permission.UserProfile'
+        abstract = settings.AUTH_USER_MODEL != 'system.UserProfile'
         verbose_name = '用户管理'
         verbose_name_plural = verbose_name
 

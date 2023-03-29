@@ -23,7 +23,7 @@ DATABASE_NAME = "automatic"
 # 注：不使用redis则无法使用celery
 REDIS_ENABLE = True
 REDIS_DB = 1
-REDIS_HOST = '127.0.0.1'
+REDIS_HOST = ''
 REDIS_PORT = 6379
 REDIS_PASSWORD = ''
 # celery 定时任务redis 库号
@@ -48,4 +48,4 @@ INTERFACE_PERMISSION = True
 # 是否开启登录ip转换成城市位置
 ENABLE_LOGIN_LOCATION = True
 # 比较报告图标存储地根目录
-COMPARE_REPORT_ADDRES = 'http://10.10.20.84:8080/'
+COMPARE_REPORT_ADDRESS = 'http://10.10.20.84:8080/'
