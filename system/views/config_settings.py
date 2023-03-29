@@ -7,7 +7,8 @@ from framework.filters import DataLevelPermissionsFilter
 from framework.response import SuccessResponse
 from framework.viewsets import CustomModelViewSet
 from system.permissions import CommonPermission
-from system.filters import ConfigSettingsFilter, ConfigSettings
+from system.filters import ConfigSettingsFilter
+from system.models import ConfigSettings
 from system.serializers import ConfigSettingsSerializer, ConfigSettingsCreateUpdateSerializer, \
     ExportConfigSettingsSerializer
 

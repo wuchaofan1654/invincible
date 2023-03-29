@@ -7,7 +7,7 @@ from framework.response import SuccessResponse, ErrorResponse
 from system.permissions import CommonPermission
 from framework.viewsets import CustomModelViewSet
 from system.filters import UserProfileFilter
-from system.models import Role, Menu
+from system.models import Role, Menu, Post
 from system.serializers import UserProfileSerializer, UserProfileCreateUpdateSerializer, PostSimpleSerializer, \
     RoleSimpleSerializer, ExportUserProfileSerializer, UserProfileImportSerializer
 from system.models import DictDetails
@@ -21,7 +21,7 @@ class GetUserProfileView(APIView):
     获取用户详细信息
     """
 
-    def get(self, request, format=None):
+    def get(self, request, _format=None):
         user_dict = UserProfileSerializer(request.user).data
         permissions_list = ['*:*:*'] if user_dict.get('admin') else Menu.objects.filter(
             role__userprofile=request.user).values_list('perms', flat=True)
@@ -47,7 +47,7 @@ class GetRouters(APIView):
 
         return dict
 
-    def get(self, request, format=None):
+    def get(self, request, _format=None):
         kwargs = {}
         if not request.user.is_superuser:
             kwargs['role__userprofile'] = request.user

@@ -7,7 +7,8 @@ from framework.filters import DataLevelPermissionsFilter
 from framework.response import SuccessResponse
 from framework.viewsets import CustomModelViewSet
 from system.permissions import CommonPermission
-from system.filters import DictDetailsFilter, DictDetails
+from system.filters import DictDetailsFilter
+from system.models import DictDetails
 from system.serializers import DictDetailsSerializer, ExportDictDetailsSerializer, DictDetailsCreateUpdateSerializer
 from utils.export_excel import export_excel_save_model
 

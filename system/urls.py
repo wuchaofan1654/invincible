@@ -45,7 +45,7 @@ urlpatterns = [
     # 根据角色ID查询部门树结构
     re_path('dept/role_dept_tree_select/(?P<pk>.*)/', DeptModelViewSet.as_view({'get': 'role_dept_tree_select'})),
     # 更新状态
-    re_path('user/changeStatus/', UserProfileModelViewSet.as_view({'put': 'change_status'})),
+    re_path('user/change_status/', UserProfileModelViewSet.as_view({'put': 'change_status'})),
 
     re_path('module/tree_select/', ModuleModelViewSet.as_view({'get': 'tree_select_list'})),
 
@@ -67,19 +67,19 @@ urlpatterns = [
     re_path('post/export/', PostModelViewSet.as_view({'get': 'export', })),
     # 用户导入模板下载及导入
     re_path('user/import_template/',
-            UserProfileModelViewSet.as_view({'get': 'importTemplate', 'post': 'importTemplate'})),
+            UserProfileModelViewSet.as_view({'get': 'import_template', 'post': 'import_template'})),
     re_path('dict/get/type/(?P<pk>.*)/', DictDetailsModelViewSet.as_view({'get': 'dict_details_list'})),
-    re_path('config/configKey/(?P<pk>.*)/', ConfigSettingsModelViewSet.as_view({'get': 'get_config_key'})),
+    re_path('config/config_key/(?P<pk>.*)/', ConfigSettingsModelViewSet.as_view({'get': 'get_config_key'})),
     # 参数管理导出
     re_path('config/export/', ConfigSettingsModelViewSet.as_view({'get': 'export'})),
     # 清理参数缓存
-    re_path('config/clearCache/', ConfigSettingsModelViewSet.as_view({'delete': 'clearCache', })),
+    re_path('config/clear_cache/', ConfigSettingsModelViewSet.as_view({'delete': 'clearCache', })),
     # 导出字典管理数据
     re_path('dict/type/export/', DictDataModelViewSet.as_view({'get': 'export'})),
     # 导出字典详情数据
     re_path('dict/data/export/', DictDetailsModelViewSet.as_view({'get': 'export'})),
     # 清理字典缓存
-    re_path('dict/type/clearCache/', DictDetailsModelViewSet.as_view({'delete': 'clearCache', })),
+    re_path('dict/type/clear_cache/', DictDetailsModelViewSet.as_view({'delete': 'clearCache', })),
     # 消息通知导出
     re_path('message/export/', MessagePushModelViewSet.as_view({'get': 'export', })),
     # 用户个人消息列表

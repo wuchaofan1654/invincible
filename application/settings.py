@@ -94,21 +94,6 @@ TEMPLATES = [
 ASGI_APPLICATION = 'application.routing.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-# DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.mysql",
-#             "HOST": os.getenv('DATABASE_HOST') or DATABASE_HOST,
-#             "PORT": DATABASE_PORT,
-#             "USER": DATABASE_USER,
-#             "PASSWORD": DATABASE_PASSWORD,
-#             "NAME": DATABASE_NAME,
-#         }
-#     }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -297,7 +282,7 @@ if locals().get("REDIS_ENABLE", True):
             "LOCATION": REDIS_URL,
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
-                # "SERIALIZER": "django_redis.serializers.json.JSONSerializer",
+                "SERIALIZER": "django_redis.serializers.json.JSONSerializer",
             }
         },
     }
@@ -344,7 +329,7 @@ AUTHENTICATION_BACKENDS = (
     'utils.backends.CustomBackend',
     'utils.backends.SessionAuthentication',
 )
-# AUTH_USER_MODEL = 'system.UserProfile'
+AUTH_USER_MODEL = 'system.UserProfile'
 # username_field
 USERNAME_FIELD = 'username'
 

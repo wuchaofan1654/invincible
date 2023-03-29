@@ -5,7 +5,8 @@ from rest_framework.request import Request
 from framework.response import SuccessResponse
 from framework.viewsets import CustomModelViewSet
 from system.permissions import CommonPermission
-from system.filters import MessagePushFilter, MessagePush
+from system.filters import MessagePushFilter
+from system.models import MessagePush
 from system.models import MessagePushUser
 from system.serializers import MessagePushSerializer, MessagePushCreateUpdateSerializer, ExportMessagePushSerializer
 

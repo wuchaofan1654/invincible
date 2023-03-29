@@ -43,8 +43,10 @@ class UserProfile(AbstractUser, CoreModel):
         interface_dict = cache.get(f'permission_interface_dict_{self.username}', {}) if \
             getattr(settings, "REDIS_ENABLE", False) else {}
         if not interface_dict:
-            for ele in self.role.filter(status='1', menu__status='1').values('menu__interface_path',
-                                                                             'menu__interface_method').distinct():
+            for ele in self.role.filter(status='1', menu__status='1').values(
+                    'menu__interface_path',
+                    'menu__interface_method'
+            ).distinct():
                 interface_path = ele.get('menu__interface_path')
                 if interface_path is None or interface_path == '':
                     continue
