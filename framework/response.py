@@ -23,14 +23,12 @@ class SuccessResponse(Response):
     标准响应成功的返回, SuccessResponse(data)或者SuccessResponse(data=data)
     (1)默认错误码返回200, 不支持指定其他返回码
     """
-
     def __init__(self, data=None, msg='success', status=None, template_name=None, headers=None, exception=False,
                  content_type=None):
         self.std_data = {
             "code": 200,
             "data": data,
             "msg": msg,
-            "status": 'success'
         }
         super().__init__(self.std_data, status, template_name, headers, exception, content_type)
 
@@ -50,7 +48,6 @@ class ErrorResponse(Response):
             "code": code,
             "data": data,
             "msg": msg,
-            "status": 'error'
         }
         super().__init__(self.std_data, status, template_name, headers, exception, content_type)
 
@@ -69,7 +66,6 @@ class SuccessJsonResponse(JsonResponse):
             "code": 200,
             "data": data,
             "msg": msg,
-            "status": 'success'
         }
         super().__init__(std_data, encoder, safe, json_dumps_params, **kwargs)
 
@@ -86,6 +82,5 @@ class ErrorJsonResponse(JsonResponse):
             "code": code,
             "data": data,
             "msg": msg,
-            "status": 'error'
         }
         super().__init__(std_data, encoder, safe, json_dumps_params, **kwargs)

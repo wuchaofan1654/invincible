@@ -82,7 +82,7 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-          v-hasPermission="['admin:system:operlog:export:get']"
+          v-hasPermission="['admin:system:operate_log:export:get']"
           type="warning"
           plain
           icon="el-icon-download"
@@ -111,7 +111,7 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
-            v-hasPermission="['admin:system:operlog:get']"
+            v-hasPermission="['admin:system:operate_log:get']"
             size="mini"
             type="text"
             icon="el-icon-view"

@@ -29,7 +29,7 @@ export function addPost(data) {
 // 修改岗位
 export function updatePost(data) {
   return request({
-    url: "/permission/post/" + data.id + "/",
+    url: "/system/post/" + data.id + "/",
     method: "put",
     data: data
   });
@@ -38,7 +38,7 @@ export function updatePost(data) {
 // 删除岗位
 export function delPost(postId) {
   return request({
-    url: "/permission/post/" + postId + "/",
+    url: "/system/post/" + postId + "/",
     method: "delete"
   });
 }
@@ -46,7 +46,7 @@ export function delPost(postId) {
 // 导出岗位
 export function exportPost(query) {
   return request({
-    url: "/permission/post/export/",
+    url: "/system/post/export/",
     method: "get",
     params: query
   });

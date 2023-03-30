@@ -147,8 +147,8 @@ import {
   updateMonitorStatusInfo,
   updateServerInfo
 } from "@/api/system/monitor/server";
-import InstrumentBoard from "@/views/system/monitor/server/components/InstrumentBoard.vue";
-import LineChart from "@/views/system/monitor/server/components/LineChart.vue";
+import InstrumentBoard from "@/views/monitor/server/components/InstrumentBoard.vue";
+import LineChart from "@/views/monitor/server/components/LineChart.vue";
 import moment from "moment";
 
 const debounce = require("lodash/debounce");

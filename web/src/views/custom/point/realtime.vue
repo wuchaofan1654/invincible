@@ -106,26 +106,26 @@
 <!--  data() {-->
 <!--    return {-->
 <!--      loading: false,-->
-<!--      activeName: 'first',-->
-<!--      deviceId: '1977',-->
-<!--      filterText: '',-->
+<!--      activeName: "first",-->
+<!--      deviceId: "1977",-->
+<!--      filterText: "",-->
 <!--      filterType: "0",-->
 <!--      points: [],-->
 <!--      filteredPoints: [],-->
 <!--      selectedPoint: {},-->
 <!--      socketYn: false,-->
 <!--      pointTypeOptions: [],-->
-<!--      pointLimit: 200,-->
+<!--      pointLimit: 200-->
 <!--    };-->
 <!--  },-->
 <!--  created() {-->
 <!--    this.getDicts("point_type_options").then(response => {-->
 <!--      this.pointTypeOptions = response.data;-->
-<!--    })-->
+<!--    });-->
 <!--  },-->
 <!--  watch: {-->
 <!--    "socketYn": {-->
-<!--      handler(val) { val ? this.initWebSocket() : this.closeWebsocket() }-->
+<!--      handler(val) { val ? this.initWebSocket() : this.closeWebsocket(); }-->
 <!--    }-->
 <!--  },-->
 <!--  methods: {-->
@@ -138,33 +138,33 @@
 <!--    },-->
 
 <!--    closeWebsocket() {-->
-<!--      this.socketYn = false-->
-<!--      this.websocket.close()-->
+<!--      this.socketYn = false;-->
+<!--      this.websocket.close();-->
 <!--    },-->
 
 <!--    websocketOnMessage(e) {-->
-<!--      const point = JSON.parse(e.data).message-->
+<!--      const point = JSON.parse(e.data).message;-->
 <!--      if (this.points.length > this.pointLimit) {-->
-<!--        this.points = this.points.slice(1, this.pointLimit)-->
+<!--        this.points = this.points.slice(1, this.pointLimit);-->
 <!--      }-->
-<!--      this.points.unshift(point)-->
-<!--      this.isPointFilterable(point)? this.filteredPoints.unshift(point): null-->
+<!--      this.points.unshift(point);-->
+<!--      this.isPointFilterable(point) ? this.filteredPoints.unshift(point) : null;-->
 <!--    },-->
 
 <!--    isPointFilterable(point) {-->
 <!--      if (point.en_name.indexOf(this.filterText) === -1) {-->
-<!--        return false-->
+<!--        return false;-->
 <!--      }-->
 <!--      if (this.filterType === "0") {-->
-<!--        return true-->
+<!--        return true;-->
 <!--      }-->
 <!--      return point.type.toString() === this.filterType;-->
 <!--    },-->
 
 <!--    filterPoints() {-->
 <!--      this.filteredPoints = this.points.filter(-->
-<!--        point => {this.isPointFilterable(point)}-->
-<!--      )-->
+<!--        point => { this.isPointFilterable(point); }-->
+<!--      );-->
 <!--    },-->
 <!--    resetPoints() {-->
 <!--      this.selectedPoint = {};-->
@@ -173,7 +173,7 @@
 <!--    },-->
 <!--  },-->
 <!--  destroyed() {-->
-<!--    console.log("destroyed")-->
+<!--    console.log("destroyed");-->
 <!--    this.websocket ? this.closeWebsocket() : null-->
 <!--  }-->
 <!--};-->

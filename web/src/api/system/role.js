@@ -29,7 +29,7 @@ export function addRole(data) {
 // 修改角色
 export function updateRole(data) {
   return request({
-    url: "/permission/role/" + data.id + "/",
+    url: "/system/role/" + data.id + "/",
     method: "put",
     data: data
   });
@@ -38,7 +38,7 @@ export function updateRole(data) {
 // 角色数据权限
 export function dataScope(data) {
   return request({
-    url: "/permission/role/" + data.id + "/",
+    url: "/system/role/" + data.id + "/",
     method: "put",
     data: data
   });
@@ -51,7 +51,7 @@ export function changeRoleStatus(roleId, status) {
     status
   };
   return request({
-    url: "/permission/role/changeStatus/",
+    url: "/system/role/changeStatus/",
     method: "put",
     data: data
   });
@@ -60,7 +60,7 @@ export function changeRoleStatus(roleId, status) {
 // 删除角色
 export function delRole(roleId) {
   return request({
-    url: "/permission/role/" + roleId + "/",
+    url: "/system/role/" + roleId + "/",
     method: "delete"
   });
 }
@@ -68,7 +68,7 @@ export function delRole(roleId) {
 // 导出角色
 export function exportRole(query) {
   return request({
-    url: "/permission/role/export/",
+    url: "/system/role/export/",
     method: "get",
     params: query
   });

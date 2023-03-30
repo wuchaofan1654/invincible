@@ -3,10 +3,11 @@ from django.contrib import admin
 # Register your models here.
 
 from system.models import Menu, Dept, Role, Post, Module, DictData, DictDetails, ConfigSettings, LoginInfo, \
-    OperationLog, CeleryLog, MessagePush, MessagePushUser, SaveFile
+    OperationLog, CeleryLog, MessagePush, MessagePushUser, SaveFile, UserProfile
 
 
 admin.site.register(Menu)
+admin.site.register(UserProfile)
 admin.site.register(Dept)
 admin.site.register(Role)
 admin.site.register(Post)

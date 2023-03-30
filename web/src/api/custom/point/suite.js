@@ -9,7 +9,6 @@ export function listSuite(query) {
   });
 }
 
-
 // 查询埋点列表
 export function getSuite(pk) {
   return request({

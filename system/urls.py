@@ -46,9 +46,7 @@ urlpatterns = [
     re_path('dept/role_dept_tree_select/(?P<pk>.*)/', DeptModelViewSet.as_view({'get': 'role_dept_tree_select'})),
     # 更新状态
     re_path('user/change_status/', UserProfileModelViewSet.as_view({'put': 'change_status'})),
-
     re_path('module/tree_select/', ModuleModelViewSet.as_view({'get': 'tree_select_list'})),
-
     # 获取用户详情
     re_path('user/details/', UserProfileModelViewSet.as_view({'get': 'get_user_details'})),
     # 后台重置密码
