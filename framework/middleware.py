@@ -114,12 +114,10 @@ class PermissionModeMiddleware(MiddlewareMixin):
         3. 获取此用户所请求的接口
         4. 获取此用户关联角色所有有权限的接口
 
-        :param interface: 接口模型
-        :param path: 接口路径
+        :param user:
+        :param view_path:
+        :param request:
         :param method: 请求方法
-        :param project: 接口所属项目
-        :param args:
-        :param kwargs:
         :return:
         """
         # (2)认证的user是否superuser, 是:通过; 否:继续
@@ -133,11 +131,6 @@ class PermissionModeMiddleware(MiddlewareMixin):
         return -10
 
     def process_view(self, request, view_func, view_args, view_kwargs):
-        # return
-        # 判断环境变量中，是否为演示模式(正常可忽略此判断)
-        white_list = ['/admin/logout/', '/admin/login/', '/admin/api-auth/login/']
-        if os.getenv('DEMO_ENV') and request.method not in ['GET', 'OPTIONS'] and request.path not in white_list:
-            return ErrorJsonResponse(data={}, msg=f'演示模式，不允许操作!')
 
         if not settings.INTERFACE_PERMISSION:
             return

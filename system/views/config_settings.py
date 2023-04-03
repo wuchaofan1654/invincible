@@ -48,7 +48,8 @@ class ConfigSettingsModelViewSet(CustomModelViewSet):
                 cache.set('system_configKey', config_key_dic, 84600)
         return SuccessResponse(msg=config_key_dic.get(kwargs.get('pk'), ''))
 
-    def clearCache(self, request: Request, *args, **kwargs):
+    @staticmethod
+    def clear_cache(request: Request, *args, **kwargs):
         """
         清理键值缓存
         :param request:

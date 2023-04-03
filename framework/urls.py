@@ -53,7 +53,7 @@ urlpatterns = [
     re_path(r'^logout/$', LogoutView.as_view()),
     re_path(r'^getInfo/$', GetUserProfileView.as_view()),
     re_path(r'^getRouters/$', GetRouters.as_view()),
-    url(r"captcha/refresh/$", CaptchaRefresh.as_view(), name="captcha-refresh"),  # 刷新验证码
+    url(r'captcha/refresh/$', CaptchaRefresh.as_view(), name="captcha-refresh"),  # 刷新验证码
     re_path('captcha/', include('captcha.urls')),  # 图片验证码 路由
 
     re_path(r'^$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

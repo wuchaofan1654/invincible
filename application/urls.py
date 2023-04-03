@@ -27,5 +27,5 @@ urlpatterns = [
     re_path(r'static/(?P<path>.*)', serve, {"document_root": settings.STATIC_URL}),
     re_path(r'^custom/', include('custom.urls')),
     re_path(r'^system/', include('system.urls')),
-    re_path(r'^framework/', include('framework.urls')),
+    re_path(r'^framework/', include('framework.urls'))
 ]

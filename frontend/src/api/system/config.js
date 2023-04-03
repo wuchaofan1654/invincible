@@ -20,7 +20,7 @@ export function getConfig(configId) {
 // 根据参数键名查询参数值
 export function getConfigKey(configKey) {
   return request({
-    url: "/system/config/configKey/" + configKey + "/?status=1",
+    url: "/system/config/config_key/" + configKey + "/?status=1",
     method: "get"
   });
 }
@@ -54,7 +54,7 @@ export function delConfig(configId) {
 // 清理参数缓存
 export function clearCache() {
   return request({
-    url: "/system/config/clearCache/",
+    url: "/system/config/clear_cache/",
     method: "delete"
   });
 }
